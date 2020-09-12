@@ -11,7 +11,7 @@
 <a href="{{ path('app_pins_create')}}">Create Pin</a>
 
 {% for pin in pins %}
-        <li>{{  pin.title }}</li>
+        <li><a href="{{ path('app_pins_show', {'id': pin.id})}}">{{  pin.title }}</a></li>
     {% else %}
         <p>Sorry no pins yet !</p>
 {% endfor %}
