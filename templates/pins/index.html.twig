@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+
+{{ 'WELCOME'|lower }}
+
 <a href="{{ path('app_pins_create')}}">Create Pin</a>
 
 {% for pin in pins %}
