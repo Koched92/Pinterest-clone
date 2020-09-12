@@ -27,13 +27,11 @@ class PinsController extends AbstractController
 
     /**
      * @Route("/pins/{id}", priority="1")
+     *
      */
-    function show(PinRepository $repo, int $id): Response{
+    function show(Pin $pin): Response{
 
-        $pin = $repo->find($id);
-        if ($pin === null){
-            throw $this->createNotFoundException('Pin #' . $id .' Not Found');
-        }
+
         return $this->render('pins/show.html.twig', compact('pin'));
     }
 
