@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Pin;
 use App\Repository\PinRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +20,7 @@ class PinsController extends AbstractController
      */
     public function index(PinRepository $repo): Response
     {
+
 
         return $this->render('pins/index.html.twig', ['pins' => $repo->findAll()]);
     }
@@ -38,6 +38,8 @@ class PinsController extends AbstractController
             ->add('description', TextareaType::class, ['attr' => ['rows'=>10, 'cols'=>50]])
             ->getForm()
         ;
+
+
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
