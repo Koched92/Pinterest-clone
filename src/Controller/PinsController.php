@@ -14,7 +14,7 @@ class PinsController extends AbstractController
 {
 
     /**
-     * @Route("/")
+     * @Route("/", name="app_home")
      */
     public function index(PinRepository $repo): Response
     {
@@ -23,7 +23,7 @@ class PinsController extends AbstractController
     }
 
     /**
-     * @Route("/create", methods={"GET", "POST"})
+     * @Route("/create", name="app_pins_create", methods={"GET", "POST"})
      */
     public function create(Request $request, EntityManagerInterface $em){
 
@@ -39,7 +39,7 @@ class PinsController extends AbstractController
                 $em->flush();
             }
 
-            return $this->redirect('/');
+            return $this->redirectToRoute('app_home');
 
         }
         return $this-> render('pins/create.html.twig');
